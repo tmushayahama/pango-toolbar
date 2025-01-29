@@ -6,14 +6,36 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface PangoDropdown {
+    }
     interface PangoToolbar {
         "headerSubTitle": string;
         "headerTitle": string;
         "pangoHome": string;
-        "showLoadingBar": boolean;
     }
 }
+export interface PangoDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLPangoDropdownElement;
+}
 declare global {
+    interface HTMLPangoDropdownElementEventMap {
+        "dropdownToggle": boolean;
+    }
+    interface HTMLPangoDropdownElement extends Components.PangoDropdown, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLPangoDropdownElementEventMap>(type: K, listener: (this: HTMLPangoDropdownElement, ev: PangoDropdownCustomEvent<HTMLPangoDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLPangoDropdownElementEventMap>(type: K, listener: (this: HTMLPangoDropdownElement, ev: PangoDropdownCustomEvent<HTMLPangoDropdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLPangoDropdownElement: {
+        prototype: HTMLPangoDropdownElement;
+        new (): HTMLPangoDropdownElement;
+    };
     interface HTMLPangoToolbarElement extends Components.PangoToolbar, HTMLStencilElement {
     }
     var HTMLPangoToolbarElement: {
@@ -21,17 +43,21 @@ declare global {
         new (): HTMLPangoToolbarElement;
     };
     interface HTMLElementTagNameMap {
+        "pango-dropdown": HTMLPangoDropdownElement;
         "pango-toolbar": HTMLPangoToolbarElement;
     }
 }
 declare namespace LocalJSX {
+    interface PangoDropdown {
+        "onDropdownToggle"?: (event: PangoDropdownCustomEvent<boolean>) => void;
+    }
     interface PangoToolbar {
         "headerSubTitle"?: string;
         "headerTitle"?: string;
         "pangoHome"?: string;
-        "showLoadingBar"?: boolean;
     }
     interface IntrinsicElements {
+        "pango-dropdown": PangoDropdown;
         "pango-toolbar": PangoToolbar;
     }
 }
@@ -39,6 +65,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "pango-dropdown": LocalJSX.PangoDropdown & JSXBase.HTMLAttributes<HTMLPangoDropdownElement>;
             "pango-toolbar": LocalJSX.PangoToolbar & JSXBase.HTMLAttributes<HTMLPangoToolbarElement>;
         }
     }

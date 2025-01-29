@@ -1,170 +1,175 @@
-// pango-toolbar.scss
+//pango-toolbar.scss
 :host {
-  --color-primary-500: #173672;
-  --color-primary-300: #627491;
-  --color-primary-700: #102653;
-  --color-accent-500: #ebc336;
-  --color-accent-200: #f5e19b;
-  --color-accent-400: #eecc54;
+  --pango-primary-color: #173672;
+  --pango-primary-light: #627491;
+  --pango-primary-dark: #102653;
+  --pango-accent-color: #ebc336;
+  --pango-accent-light: #f5e19b;
+  --pango-accent-mid: #eecc54;
+
+  --pango-toolbar-height: 50px;
+  --pango-toolbar-bg: var(--pango-primary-color);
+  --pango-toolbar-color: var(--pango-accent-color);
+  --pango-toolbar-hover-color: var(--pango-accent-light);
+  --pango-toolbar-border-color: var(--pango-accent-light);
+  --pango-toolbar-dropdown-bg: white;
+  --pango-toolbar-dropdown-color: var(--pango-primary-color);
+  --pango-toolbar-dropdown-hover-bg: #f1f1f1;
+
+  --pango-header-font-size: 1.875rem;
+  --pango-header-font-weight: bold;
+  --pango-subheader-font-size: 1.875rem;
+  --pango-subheader-font-weight: normal;
+  --pango-button-font-size: 1.25rem;
 }
 
-.toolbar {
-  position: fixed;
-  top: 0;
-  left: 0;
+.pango-toolbar {
   width: 100%;
-  height: 50px;
-  background-color: var(--color-primary-500);
-  color: var(--color-accent-500);
+  height: var(--pango-toolbar-height);
+  background-color: var(--pango-toolbar-bg);
+  color: var(--pango-toolbar-color);
   z-index: 50;
+  overflow-y: visible;
 
-  &-container {
+  &__container {
     padding: 0 8px;
-    height: 50px;
+    height: 100%;
     display: flex;
     align-items: center;
     position: relative;
   }
-}
 
-.loading-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, var(--color-accent-400) 0%, var(--color-accent-500) 50%, var(--color-accent-400) 100%);
-  background-size: 200% 100%;
-  animation: loading 1.5s infinite;
-}
+  &__menu-button {
+    background: none;
+    border: none;
+    color: var(--pango-toolbar-color);
+    cursor: pointer;
+    padding: 8px;
+    margin-right: 8px;
 
-.menu-button {
-  background: none;
-  border: none;
-  color: var(--color-accent-500);
-  cursor: pointer;
-  padding: 8px;
-  margin-right: 8px;
-
-  &:hover {
-    color: var(--color-accent-200);
+    &:hover {
+      color: var(--pango-toolbar-hover-color);
+    }
   }
-}
 
-.logo {
-  &-container {
+  &__logo-container {
     display: flex;
     align-items: center;
     height: 100%;
   }
 
-  &-link {
+  &__logo-link {
     text-decoration: none;
-    color: var(--color-accent-500);
+    color: var(--pango-toolbar-color);
 
     &:hover {
-      color: var(--color-accent-200);
+      color: var(--pango-toolbar-hover-color);
     }
   }
 
-  &-text {
-    font-size: 1.875rem;
-    font-weight: bold;
+  &__logo-text {
+    font-size: var(--pango-header-font-size);
+    font-weight: var(--pango-header-font-weight);
     margin-right: 8px;
   }
 
-  &-section {
+  &__header-text {
+    font-size: var(--pango-subheader-font-size);
+    font-weight: var(--pango-subheader-font-weight);
+  }
+
+  &__actions {
+    display: none;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+
+    @media (min-width: 768px) {
+      display: flex;
+    }
+  }
+
+  &__social-links {
+    display: flex;
+    align-items: center;
+    padding-right: 12px;
+  }
+
+  &__action-buttons {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-left: 1px solid var(--pango-toolbar-border-color);
+  }
+
+  &__action-link {
+    background: none;
+    border: none;
+    color: var(--pango-toolbar-color);
+    font-size: var(--pango-button-font-size);
+    cursor: pointer;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: inline-block;
+
+    &:hover {
+      color: var(--pango-toolbar-hover-color);
+    }
+  }
+
+  &__select {
+    background: none;
+    border: none;
+    color: var(--pango-toolbar-color);
+    font-size: var(--pango-button-font-size);
+    cursor: pointer;
+    padding: 8px 16px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &:hover {
+      color: var(--pango-toolbar-hover-color);
+    }
+
+    option {
+      background: var(--pango-toolbar-dropdown-bg);
+      color: var(--pango-toolbar-dropdown-color);
+      padding: 12px;
+    }
+  }
+
+  &__logo-section {
     display: flex;
     align-items: center;
   }
 
-  &-divider {
-    border-left: 1px solid var(--color-accent-200);
+  &__logo-divider {
+    border-left: 1px solid var(--pango-toolbar-border-color);
     padding: 0 16px;
-  }
-
-  &-image {
-    height: 44px;
-  }
-}
-
-.title-text {
-  font-size: 1.875rem;
-}
-
-.toolbar-actions {
-  display: none;
-  flex: 1;
-  justify-content: flex-end;
-  align-items: center;
-
-  @media (min-width: 768px) {
+    height: 100%;
     display: flex;
+    align-items: center;
   }
-}
 
-.social-links {
-  display: flex;
-  align-items: center;
-  padding-right: 12px;
-}
-
-.action-buttons {
-  display: flex;
-  align-items: center;
-  padding: 0 12px;
-  border-left: 1px solid var(--color-accent-200);
-}
-
-.action-button {
-  background: none;
-  border: none;
-  color: var(--color-accent-500);
-  font-size: 1.25rem;
-  cursor: pointer;
-  padding: 8px 16px;
-  text-decoration: none;
-
-  &:hover {
-    color: var(--color-accent-200);
+  &__partner-logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
-}
 
-.dropdown {
-  position: relative;
-  display: inline-block;
+  &__logo-image {
+    height: 100%;
+    max-height: 44px;
+    width: auto;
+    object-fit: contain;
+  }
 
-  &.active .dropdown-content {
+  .pango-toolbar__dropdown-content {
+    display: none;
+  }
+
+  .pango-toolbar__dropdown-content.pango-active {
     display: block;
-  }
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 160px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  z-index: 1;
-
-  a {
-    color: var(--color-primary-500);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-
-    &:hover {
-      background-color: #f1f1f1;
-    }
-  }
-}
-
-@keyframes loading {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
   }
 }
