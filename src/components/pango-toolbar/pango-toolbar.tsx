@@ -18,12 +18,6 @@ export class PangoToolbar {
     return (
       <div class="pango-toolbar">
         <div class="pango-toolbar__container">
-          <button class="pango-toolbar__menu-button" aria-label="Menu">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-            </svg>
-          </button>
-
           <div class="pango-toolbar__logo-container">
             <a href={this.pangoHome} class="pango-toolbar__logo-link">
               <span class="pango-toolbar__logo-text">{this.headerTitle}</span>
@@ -45,7 +39,7 @@ export class PangoToolbar {
             <div class="pango-toolbar__action-buttons">
               <pango-dropdown>
                 <span slot="trigger">Download</span>
-                <div slot="content">
+                <div slot="content" class="dropdown-content">
                   <a href="https://functionome.org/download/export_annotations.zip">As CSV</a>
                   <a href="https://functionome.org/download/export_annotations.json.gz">As JSON</a>
                 </div>

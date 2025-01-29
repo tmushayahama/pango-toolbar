@@ -1,4 +1,3 @@
-// pango-dropdown.tsx
 import { Component, h, State, Element, Event, EventEmitter } from '@stencil/core';
 
 @Component({
@@ -35,11 +34,11 @@ export class PangoDropdown {
 
   render() {
     return (
-      <div class="pango-toolbar__dropdown">
-        <a href="#" class="pango-toolbar__dropdown-trigger" onClick={this.toggleDropdown}>
+      <div class="dropdown">
+        <a href="#" class="dropdown-trigger" onClick={this.toggleDropdown}>
           <slot name="trigger">Toggle Dropdown</slot>
         </a>
-        <div class={`pango-toolbar__dropdown-menu ${this.isOpen ? 'pango-active' : ''}`}>
+        <div class={`dropdown-content ${this.isOpen ? 'active' : ''}`}>
           <slot name="content"></slot>
         </div>
       </div>
