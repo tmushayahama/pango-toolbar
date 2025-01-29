@@ -1,0 +1,53 @@
+{
+  "name": "pango-toolbar",
+  "version": "0.0.1",
+  "description": "PAN-GO toolbar",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/pango-toolbar/pango-toolbar.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/pango-toolbar/pango-toolbar.esm.js",
+      "require": "./dist/pango-toolbar/pango-toolbar.cjs.js"
+    },
+    "./overrep-form": {
+      "import": "./dist/components/overrep-form.js",
+      "types": "./dist/components/overrep-form.d.ts"
+    },
+    "./loader": {
+      "import": "./loader/index.js",
+      "require": "./loader/index.cjs",
+      "types": "./loader/index.d.ts"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionic-team/stencil-component-starter.git"
+  },
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
+  },
+  "devDependencies": {
+    "@stencil/core": "^4.7.0",
+    "@types/jest": "^29.5.6",
+    "@types/node": "^16.18.11",
+    "jest": "^29.7.0",
+    "jest-cli": "^29.7.0",
+    "puppeteer": "^21.9.0",
+    "@rollup/plugin-image": "^3.0.3",
+    "@stencil/sass": "^3.0.5",
+    "rollup-plugin-node-polyfills": "^0.2.1"
+  },
+  "license": "MIT"
+}
