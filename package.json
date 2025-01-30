@@ -13,9 +13,9 @@
       "import": "./dist/pango-toolbar/pango-toolbar.esm.js",
       "require": "./dist/pango-toolbar/pango-toolbar.cjs.js"
     },
-    "./overrep-form": {
-      "import": "./dist/components/overrep-form.js",
-      "types": "./dist/components/overrep-form.d.ts"
+    "./pango-toolbar": {
+      "import": "./dist/components/pango-toolbar.js",
+      "types": "./dist/components/pango-toolbar.d.ts"
     },
     "./loader": {
       "import": "./loader/index.js",
