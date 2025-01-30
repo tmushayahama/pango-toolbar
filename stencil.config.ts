@@ -18,19 +18,28 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
+      copy: [{
+        src: 'assets',
+        dest: 'dist/assets'
+      }]
     },
     {
       type: 'dist-custom-elements',
+      copy: [{
+        src: 'assets',
+        dest: 'dist/assets'
+      }]
     },
     {
       type: 'docs-readme',
     },
     {
       type: 'www',
-      serviceWorker: null, // disable service workers
+      serviceWorker: null,
       copy: [
         { src: '**/*.html' },
-        { src: '*.css' }
+        { src: '*.css' },
+        { src: 'assets/**/*', dest: 'assets/' }
       ]
     },
   ],
@@ -38,4 +47,3 @@ export const config: Config = {
     enableImportInjection: true
   }
 };
-

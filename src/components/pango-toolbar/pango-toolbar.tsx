@@ -1,9 +1,14 @@
 import { Component, Prop, h, State, Element } from '@stencil/core';
 
+// Import images
+import goLogo from './../../assets/images/go-logo-yellow.png';
+import pantherLogo from './../../assets/images/panther-logo-yellow.png';
+
 @Component({
   tag: 'pango-toolbar',
   styleUrl: 'pango-toolbar.scss',
   shadow: true,
+  assetsDirs: ['assets']
 })
 export class PangoToolbar {
   @Element() el: HTMLElement;
@@ -50,12 +55,12 @@ export class PangoToolbar {
             <div class="pango-toolbar__logo-section">
               <div class="pango-toolbar__logo-divider">
                 <a href="http://geneontology.org/" target="_blank" rel="noopener noreferrer" class="pango-toolbar__partner-logo">
-                  <img src="/assets/images/logos/go-logo-yellow.png" alt="GO Logo" class="pango-toolbar__logo-image" />
+                  <img src={goLogo} alt="GO Logo" class="pango-toolbar__logo-image" />
                 </a>
               </div>
               <div class="pango-toolbar__logo-divider">
                 <a href="http://pantherdb.org" target="_blank" rel="noopener noreferrer" class="pango-toolbar__partner-logo">
-                  <img src="/assets/images/logos/panther-logo-yellow.png" alt="Panther Logo" class="pango-toolbar__logo-image" />
+                  <img src={pantherLogo} alt="Panther Logo" class="pango-toolbar__logo-image" />
                 </a>
               </div>
             </div>
