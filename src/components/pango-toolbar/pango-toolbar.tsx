@@ -1,4 +1,5 @@
 import { Component, Prop, h, State, Element } from '@stencil/core';
+import { ENVIRONMENT } from '../../utils/environment';
 
 // Import images
 import goLogo from './../../assets/images/go-logo-yellow.png';
@@ -45,11 +46,15 @@ export class PangoToolbar {
               <pango-dropdown>
                 <span slot="trigger">Download</span>
                 <div slot="content" class="dropdown-content">
-                  <a href="https://functionome.org/download/export_annotations.zip">As CSV</a>
-                  <a href="https://functionome.org/download/export_annotations.json.gz">As JSON</a>
+                  <a href={ENVIRONMENT.downloadAllDataCSVUrl}>All data as CSV</a>
+                  <a href={ENVIRONMENT.downloadAllDataJSONUrl}>All data as JSON</a>
+                  <a href={ENVIRONMENT.downloadAnnotationsGAFUrl}>Annotations as GAF</a>
+                  <a href={ENVIRONMENT.downloadEvolutionaryModelsGAFUrl} target="_blank" rel="noopener noreferrer">Evolutionary models as GAF</a>
+                  <a href={ENVIRONMENT.downloadOntologyFilesUrl} target="_blank" rel="noopener noreferrer">Ontology Files</a>
                 </div>
               </pango-dropdown>
               <a href={`${this.pangoHome}/about`} class="pango-toolbar__action-link">About</a>
+              <a href={`${this.pangoHome}/help`} class="pango-toolbar__action-link">Help</a>
             </div>
 
             <div class="pango-toolbar__logo-section">
